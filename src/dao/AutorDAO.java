@@ -80,6 +80,19 @@ public class AutorDAO {
     }
 
     public void deletar(Autor autor){
+        String sql = "delete from autores where id = ?";
+
+        try{
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+
+            stmt.setInt(1, autor.getId());
+
+            stmt.execute();
+
+            conexao.close();
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
 
     }
 

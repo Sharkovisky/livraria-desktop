@@ -16,8 +16,9 @@ public class teste {
 
         //a1DAO.inserir(a1);
 
-        a1.setId(15);
+        a1.setId(14);
 
-        a1DAO.deletar(a1);
+        //a1DAO.deletar(a1);
+        a1DAO.alterar(a1);
     }
 }
