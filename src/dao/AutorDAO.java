@@ -19,14 +19,13 @@ public class AutorDAO {
     }
 
     public void inserir(Autor autor){
-        String sql = "insert into autores (id, nome, email)" +
-                "values (?, ?, ?)";
+        String sql = "insert into autores (nome, email)" +
+                "values (?, ?)";
 
         try{
             PreparedStatement stmt = conexao.prepareStatement(sql);
-            stmt.setInt(1, autor.getId());
-            stmt.setString(2, autor.getNome());
-            stmt.setString(3, autor.getEmail());
+            stmt.setString(1, autor.getNome());
+            stmt.setString(2, autor.getEmail());
 
             stmt.execute();
 

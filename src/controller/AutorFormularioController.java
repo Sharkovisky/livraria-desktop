@@ -9,27 +9,22 @@ import model.Autor;
 
 public class AutorFormularioController {
 
-    @FXML private TextField txfID;
     @FXML private TextField txfNome;
     @FXML private TextField txfEmail;
     @FXML private Button btnSalvar;
 
     private void limparCampo(){
-        txfID.setText(" ");
         txfNome.setText(" ");
         txfEmail.setText(" ");
-        txfID.requestFocus();
+        txfNome.requestFocus();
     }
 
     public void salvar(){
         // TODO
-        System.out.println("ID: "+txfID.getText());
         System.out.println("Nome: "+txfNome.getText());
         System.out.println("E-mail: "+txfEmail.getText());
 
         Autor autor = new Autor();
-        int id = Integer.parseInt(txfID.getText());
-        autor.setId(id);
         autor.setNome(txfNome.getText());
         autor.setEmail(txfEmail.getText());
 
