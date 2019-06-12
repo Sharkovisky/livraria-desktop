@@ -19,6 +19,9 @@ public class teste {
         a1.setId(14);
 
         //a1DAO.deletar(a1);
-        a1DAO.alterar(a1);
+        //a1DAO.alterar(a1);
+
+        //System.out.println(a1DAO.listarPorId(1).getNome());
+        System.out.println(a1DAO.listarTodos());
     }
 }

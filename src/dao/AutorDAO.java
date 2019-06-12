@@ -111,7 +111,7 @@ public class AutorDAO {
 
                 autor.setId(resultado.getInt("id"));
                 autor.setNome(resultado.getString("nome"));
-                autor.setNome(resultado.getString("email"));
+                autor.setEmail(resultado.getString("email"));
 
                 conexao.close();
             }catch(SQLException e){
