@@ -18,7 +18,7 @@ public class LivroDAO {
     }
 
     public void inserir(Livro livro){
-        String sql = "insert into livros (nome, data_lancamento, quantidade, preco, editora_id)" +
+        String sql = "insert into livros (titulo, data_lancamento, quantidade, preco, editora_id)" +
                 "values (?, ?, ?, ?, ?)";
 
         try{
