@@ -12,4 +12,7 @@ public class LivroFormularioController {
     @FXML private TextField txdPreco;
     @FXML private ChoiceBox chbxEditora;
 
+    public void salvar(){
+
+    }
 }

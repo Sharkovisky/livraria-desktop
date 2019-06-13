@@ -11,7 +11,7 @@ public class AutorListarController {
 
     @FXML private TableView tbtvwAutores;
 
-    private void listarAutores(){
+    public void listarAutores(){
         System.out.println("Funcionando?");
         AutorDAO a1 = new AutorDAO();
         a1.listarTodos();
