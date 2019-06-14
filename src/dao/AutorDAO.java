@@ -28,7 +28,6 @@ public class AutorDAO {
             stmt.setString(2, autor.getEmail());
 
             stmt.execute();
-
             conexao.close();
 
         } catch(SQLException e){
@@ -55,6 +54,7 @@ public class AutorDAO {
                }
 
                conexao.close();
+
            }catch(SQLException e){
                throw new RuntimeException(e);
            }
@@ -72,8 +72,8 @@ public class AutorDAO {
                 stmt.setInt(3, autor.getId());
 
                 stmt.execute();
-
                 conexao.close();
+
             }catch(SQLException e){
                 throw new RuntimeException(e);
             }
@@ -88,8 +88,8 @@ public class AutorDAO {
             stmt.setInt(1, autor.getId());
 
             stmt.execute();
-
             conexao.close();
+
         }catch(SQLException e){
             throw new RuntimeException(e);
         }
@@ -114,6 +114,7 @@ public class AutorDAO {
                 autor.setEmail(resultado.getString("email"));
 
                 conexao.close();
+
             }catch(SQLException e){
                 throw new RuntimeException(e);
             }
