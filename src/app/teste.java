@@ -1,9 +1,11 @@
 package app;
 
 import dao.AutorDAO;
+import dao.ContatoDAO;
 import dao.EditoraDAO;
 import dao.LivroDAO;
 import model.Autor;
+import model.Contato;
 import model.Editora;
 import model.Livro;
 
@@ -87,6 +89,16 @@ public class teste {
         //ed1DAO.alterar(ed1);
         //ed1DAO.deletar(ed1);
         */
+
+        Contato c1 = new Contato();
+        ContatoDAO c1DAO = new ContatoDAO();
+
+        c1.setId(26);
+        c1.setNome("Faz Livros e Jogos");
+        c1.setContato("www.fazlivros.com.br");
+        //c1DAO.alterar(c1);
+
+        c1DAO.deletar(c1);
 
     }
 }
