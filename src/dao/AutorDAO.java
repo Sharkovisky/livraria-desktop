@@ -2,6 +2,7 @@ package dao;
 
 import com.mysql.cj.x.protobuf.MysqlxPrepare;
 import model.Autor;
+import model.Contato;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,12 +28,16 @@ public class AutorDAO {
             stmt.setString(1, autor.getNome());
             stmt.setString(2, autor.getEmail());
 
+            ContatoDAO cDAO = new ContatoDAO();
+            cDAO.inserirAutor(autor);
+
             stmt.execute();
             conexao.close();
 
         } catch(SQLException e){
             throw new RuntimeException(e);
         }
+
     }
 
     public List<Autor> listarTodos(){

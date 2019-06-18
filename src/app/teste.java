@@ -21,18 +21,18 @@ public class teste {
         Autor a1 = new Autor();
         AutorDAO a1DAO = new AutorDAO();
 
-        a1.setNome("Francicano Aeho");
-        a1.setEmail("franciscano.aeho@gmail.com");
+        a1.setNome("Nelson Contato");
+        a1.setEmail("nelson.contato@gmail.com");
 
         a1DAO.inserir(a1);
 
-        a1.setId(14);
+        //a1.setId(14);
 
-        a1DAO.deletar(a1);
-        a1DAO.alterar(a1);
+        //a1DAO.deletar(a1);
+        //a1DAO.alterar(a1);
 
-        System.out.println(a1DAO.listarPorId(1).getNome());
-        System.out.println(a1DAO.listarTodos());
+        //System.out.println(a1DAO.listarPorId(1).getNome());
+        //System.out.println(a1DAO.listarTodos());
 
         */
 
@@ -70,6 +70,7 @@ public class teste {
         //System.out.println(l1DAO.listarPorId(11).getData_lancamento().toLocalDate().format(formatoBrasil));
         */
 
+        /*TESTE EDITORA
         Editora ed1 = new Editora();
         EditoraDAO ed1DAO = new EditoraDAO();
 
@@ -80,11 +81,12 @@ public class teste {
         ed1.setMunicipio(1);
         ed1.setTelefone("+55 (69) 3321-4175");
 
-        //ed1DAO.inserir(ed1);
-        ed1.setId(6);
+        ed1DAO.inserir(ed1);
+        //ed1.setId(6);
 
         //ed1DAO.alterar(ed1);
-        ed1DAO.deletar(ed1);
+        //ed1DAO.deletar(ed1);
+        */
 
     }
 }

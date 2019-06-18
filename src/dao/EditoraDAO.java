@@ -1,5 +1,6 @@
 package dao;
 
+import model.Contato;
 import model.Editora;
 
 import java.sql.Connection;
@@ -30,9 +31,12 @@ public class EditoraDAO {
             stmt.setInt(5, editora.getMunicipio());
             stmt.setString(6, editora.getTelefone());
 
-            stmt.execute();
+            ContatoDAO cDAO = new ContatoDAO();
+            cDAO.inserirEditora(editora);
 
+            stmt.execute();
             conexao.close();
+
         }catch(SQLException e){
             throw new RuntimeException(e);
         }
