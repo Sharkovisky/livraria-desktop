@@ -1,6 +1,8 @@
 package dao;
 
 import com.mysql.cj.x.protobuf.MysqlxPrepare;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.Autor;
 import model.Contato;
 
@@ -40,7 +42,7 @@ public class AutorDAO {
 
     }
 
-    public List<Autor> listarTodos(){
+    public ObservableList listarTodos(){
            String sql = "select * from autores";
            List<Autor> autores = new ArrayList<>();
 
@@ -63,7 +65,8 @@ public class AutorDAO {
            }catch(SQLException e){
                throw new RuntimeException(e);
            }
-           return autores;
+           ObservableList data = FXCollections.observableList(autores);
+           return data;
     }
 
     public void alterar(Autor autor){

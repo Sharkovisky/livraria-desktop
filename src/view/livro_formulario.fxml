@@ -8,27 +8,42 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LivroFormularioController">
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LivroFormularioController">
     <children>
-        <Pane layoutX="-19.0" prefHeight="66.0" prefWidth="624.0" style="-fx-background-color: #0000A7;">
+        <Pane prefHeight="113.0" prefWidth="960.0" style="-fx-background-color: #0000A7;">
             <children>
-                <Label layoutX="204.0" layoutY="20.0" text="Cadastro de Autores" textFill="WHITE">
+                <Label layoutX="326.0" layoutY="39.0" text="Cadastro de Autores" textFill="WHITE">
                     <font>
-                        <Font size="21.0" />
+                        <Font size="30.0" />
                     </font>
                 </Label>
             </children></Pane>
-        <Label layoutX="63.0" layoutY="123.0" text="Titulo:" />
-        <Label layoutX="61.0" layoutY="179.0" text="Data de lancamento:" />
-        <TextField fx:id="txfTitulo" layoutX="151.0" layoutY="118.0" />
-        <TextField fx:id="txfData_lancamento" layoutX="151.0" layoutY="174.0" />
-        <Button fx:id="btnSalvar" layoutX="407.0" layoutY="334.0" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
-      <Label layoutX="61.0" layoutY="232.0" text="Quantidade:" />
-      <TextField fx:id="txfQuantidade" layoutX="151.0" layoutY="227.0" />
-      <TextField fx:id="txfPreco" layoutX="151.0" layoutY="276.0" />
-      <Label layoutX="61.0" layoutY="281.0" text="Preço:" />
-      <Label layoutX="61.0" layoutY="339.0" text="Editora:" />
-      <ChoiceBox fx:id="chbxEditora" layoutX="151.0" layoutY="334.0" prefHeight="26.0" prefWidth="171.0" />
+        <Label layoutX="61.0" layoutY="149.0" text="Titulo:">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+        <Label layoutX="61.0" layoutY="204.0" text="Data de lancamento:">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+        <TextField fx:id="txfTitulo" layoutX="316.0" layoutY="148.0" prefHeight="26.0" prefWidth="242.0" />
+        <TextField fx:id="txfData_lancamento" layoutX="316.0" layoutY="203.0" prefHeight="26.0" prefWidth="242.0" />
+        <Button fx:id="btnSalvar" layoutX="715.0" layoutY="438.0" mnemonicParsing="false" onAction="#salvar" prefHeight="36.0" prefWidth="79.0" text="Salvar" />
+      <Label layoutX="61.0" layoutY="258.0" text="Quantidade:">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <TextField fx:id="txfQuantidade" layoutX="316.0" layoutY="257.0" prefHeight="26.0" prefWidth="242.0" />
+      <TextField fx:id="txfPreco" layoutX="316.0" layoutY="309.0" prefHeight="26.0" prefWidth="242.0" />
+      <Label layoutX="63.0" layoutY="310.0" text="Preço:">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="61.0" layoutY="365.0" text="Editora:">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <ChoiceBox fx:id="chbxEditora" layoutX="316.0" layoutY="364.0" prefHeight="26.0" prefWidth="242.0" />
     </children>
 
 </AnchorPane>

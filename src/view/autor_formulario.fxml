@@ -7,20 +7,26 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AutorFormularioController">
+<AnchorPane prefHeight="540" prefWidth="960" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AutorFormularioController">
    <children>
-      <Pane layoutX="-19.0" prefHeight="66.0" prefWidth="624.0" style="-fx-background-color: #0000A7;">
+      <Pane prefHeight="113.0" prefWidth="960.0" style="-fx-background-color: #0000A7;">
          <children>
-            <Label layoutX="204.0" layoutY="20.0" text="Cadastro de Autores" textFill="WHITE">
+            <Label layoutX="326.0" layoutY="39.0" text="Cadastro de Autores" textFill="WHITE">
                <font>
-                  <Font size="21.0" />
+                  <Font size="30.0" />
                </font>
             </Label>
          </children></Pane>
-      <Label layoutX="61.0" layoutY="184.0" text="Nome:" />
-      <Label layoutX="61.0" layoutY="242.0" text="E-mail:" />
-      <TextField fx:id="txfNome" layoutX="151.0" layoutY="179.0" />
-      <TextField fx:id="txfEmail" layoutX="151.0" layoutY="245.0" />
-      <Button fx:id="btnSalvar" layoutX="411.0" layoutY="321.0" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
+      <Label layoutX="61.0" layoutY="184.0" text="Nome:">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="59.0" layoutY="256.0" text="E-mail:">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <TextField fx:id="txfNome" layoutX="151.0" layoutY="184.0" prefHeight="26.0" prefWidth="242.0" />
+      <TextField fx:id="txfEmail" layoutX="151.0" layoutY="257.0" prefHeight="26.0" prefWidth="242.0" />
+      <Button fx:id="btnSalvar" layoutX="747.0" layoutY="429.0" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
    </children>
 </AnchorPane>
