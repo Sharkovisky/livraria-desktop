@@ -1,5 +1,7 @@
 package dao;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.Contato;
 import model.Editora;
 
@@ -42,7 +44,7 @@ public class EditoraDAO {
         }
     }
 
-    public List<Editora> listarTodos(){
+    public ObservableList listarTodos(){
         String sql = "select * from editoras";
         List<Editora> editoras = new ArrayList<>();
 
@@ -65,10 +67,12 @@ public class EditoraDAO {
             }
 
             conexao.close();
+
         }catch(SQLException e){
             throw new RuntimeException(e);
         }
-        return editoras;
+        ObservableList data = FXCollections.observableList(editoras);
+        return data;
     }
 
     public void alterar(Editora editora){

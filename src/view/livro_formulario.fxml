@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LivroFormularioController">
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LivroFormularioController">
     <children>
         <Pane prefHeight="113.0" prefWidth="960.0" style="-fx-background-color: #0000A7;">
             <children>
@@ -43,7 +43,7 @@
          <font>
             <Font size="20.0" />
          </font></Label>
-      <ChoiceBox fx:id="chbxEditora" layoutX="316.0" layoutY="364.0" prefHeight="26.0" prefWidth="242.0" />
+      <ChoiceBox fx:id="choiceEditora" layoutX="316.0" layoutY="364.0" onMouseClicked="#initEditoras" prefHeight="26.0" prefWidth="242.0" />
     </children>
 
 </AnchorPane>
