@@ -75,6 +75,31 @@ public class EditoraDAO {
         return data;
     }
 
+    public ObservableList listarNomes(){
+        String sql = "select nome from editoras";
+        List<Editora> editoras = new ArrayList<>();
+
+        try{
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+
+            ResultSet resultados = stmt.executeQuery();
+
+            while(resultados.next()){
+                Editora editora = new Editora();
+                editora.setNome(resultados.getString("nome"));
+
+                editoras.add(editora);
+            }
+
+            conexao.close();
+
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+        ObservableList data = FXCollections.observableList(editoras);
+        return data;
+    }
+
     public void alterar(Editora editora){
         String sql = "update editoras set nome = ?, site = ?, endereco = ?," +
                 "bairro = ?, municipio = ?, telefone = ? where id = ?";
