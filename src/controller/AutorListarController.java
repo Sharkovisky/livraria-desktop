@@ -1,12 +1,15 @@
 package controller;
 
 import dao.AutorDAO;
+import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import model.Autor;
 
 import java.net.URL;
@@ -19,18 +22,21 @@ public class AutorListarController implements Initializable {
     @FXML private TableColumn<Autor, Integer> columnId = new TableColumn<>("ID");
     @FXML private TableColumn<Autor, String> columnNome = new TableColumn<>("Nome");
     @FXML private TableColumn<Autor, String> columnEmail = new TableColumn<>("E-mail");
+    @FXML private Button btnResetar;
+    @FXML private TextField txfID, txfNome, txfEmail;
 
     private Autor autor = new Autor();
     private AutorDAO autorDAO = new AutorDAO();
-    private Autor autorSelecionado;
+    private Autor autorSelecionado = null;
+
     @Override
     public void initialize(URL location, ResourceBundle resources){
         InitTable();
     }
 
     public void InitTable(){
-        autorSelecionado = null;
-        tbvwAutores.setEditable(true);
+        //autorSelecionado = null;
+        tbvwAutores.setEditable(false);
         columnId.setCellValueFactory(new PropertyValueFactory<Autor, Integer>("id"));
 
         columnNome.setCellValueFactory((param) -> new SimpleStringProperty(param.getValue().getNome()));
@@ -42,7 +48,47 @@ public class AutorListarController implements Initializable {
         //columnEmail.setOnEditCommit(SendCommitEmail);
 
         tbvwAutores.setItems(autorDAO.listarTodos());
-        //tbvwAutores.setOnMouseClicked(TableClick);
+        tbvwAutores.setOnMouseClicked(tableClick);
+    }
+
+    private EventHandler<MouseEvent> tableClick = evt ->{
+        autorSelecionado = tbvwAutores.getSelectionModel().getSelectedItem();
+        if(autorSelecionado!=null){
+            String id = Integer.toString(autorSelecionado.getId());
+            txfID.setText(id);
+            txfNome.setText(autorSelecionado.getNome());
+            txfEmail.setText(autorSelecionado.getEmail());
+        }
+    };
+
+    public void alterar(){
+        Autor autor = new Autor();
+        int id = Integer.parseInt(txfID.getText());
+        autor.setId(id);
+        autor.setNome(txfNome.getText());
+        autor.setEmail(txfEmail.getText());
+
+        AutorDAO autorDAO = new AutorDAO();
+        autorDAO.alterar(autor);
+
+        resetar();
+    }
+
+    public void deletar(){
+        Autor autor = new Autor();
+        int id = Integer.parseInt(txfID.getText());
+        autor.setId(id);
+
+        AutorDAO autorDAO = new AutorDAO();
+        autorDAO.deletar(autor);
+
+        resetar();
+    }
+
+    public void resetar(){
+        System.out.println("Teste de reset2");
+        tbvwAutores.getItems().removeAll();
+        //tbvwAutores.getItems().addAll(autorDAO.listarTodos());
     }
 
 }
