@@ -7,11 +7,13 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import model.Editora;
@@ -21,6 +23,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +31,7 @@ import java.util.ResourceBundle;
 
 public class LivroFormularioController implements Initializable {
 
+    @FXML private TextField txfID;
     @FXML private TextField txfTitulo;
     @FXML private TextField txfData_lancamento;
     @FXML private TextField txfQuantidade;
@@ -55,9 +59,7 @@ public class LivroFormularioController implements Initializable {
         columnId.setCellValueFactory(new PropertyValueFactory<Livro, Integer>("id"));
 
         columnTitulo.setCellValueFactory((param) -> new SimpleStringProperty(param.getValue().getTitulo()));
-        columnTitulo.setCellFactory(TextFieldTableCell.forTableColumn());
-
-
+        //columnTitulo.setCellFactory(TextFieldTableCell.forTableColumn());
 
         columnData.setCellValueFactory(new PropertyValueFactory<Livro, Date>("data_lancamento"));
 
@@ -68,8 +70,53 @@ public class LivroFormularioController implements Initializable {
         columnEditora.setCellValueFactory((param) -> new SimpleObjectProperty(param.getValue().getEditora_id()));
 
         tbvwLivros.setItems(livroDAO.listarTodos());
+        tbvwLivros.setOnMouseClicked(tableClick);
 
     }
+
+    private EventHandler<MouseEvent> tableClick = evt ->{
+        livroSelecionado = tbvwLivros.getSelectionModel().getSelectedItem();
+        if(livroSelecionado!=null){
+            String id = Integer.toString(livroSelecionado.getId());
+            txfID.setText(id);
+            txfTitulo.setText(livroSelecionado.getTitulo());
+
+            DateTimeFormatter formatoBrasil = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            DateTimeFormatter formatoMySql = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            //LocalDate d1 = LocalDate.parse(livroSelecionado.getData_lancamento(), formatoBrasil);
+            //Date d2 = java.sql.Date.valueOf(d1);
+
+            LocalDate d3 = livroSelecionado.getData_lancamento().toLocalDate();
+            String d4 = d3.format(formatoBrasil);
+
+            txfData_lancamento.setText(d4);
+            String quantidade = Integer.toString(livroSelecionado.getQuantidade());
+            txfQuantidade.setText(quantidade);
+            String preco = Float.toString(livroSelecionado.getPreco());
+            txfPreco.setText(preco);
+
+            Callback<ListView<Editora>, ListCell<Editora>> cellFactory = new Callback<ListView<Editora>, ListCell<Editora>>() {
+                @Override
+                public ListCell<Editora> call(ListView<Editora> editoraListView) {
+                    return new ListCell<Editora>(){
+
+                        @Override
+                        protected void updateItem(Editora editora, boolean vazio){
+                            super.updateItem(editora, vazio);
+                            if(editora == null || vazio){
+                                setGraphic(null);
+                            }else if (editora.getId() == livroSelecionado.getId()){
+                                setText(editora.getNome());
+                            }
+                        }
+                    };
+                }
+            };
+
+            comboEditoras.setButtonCell(cellFactory.call(null));
+            //comboEditoras.setCellFactory(cellFactory);
+        }
+    };
 
     public void initEditoras() {
 

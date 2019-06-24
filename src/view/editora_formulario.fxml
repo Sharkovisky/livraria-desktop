@@ -9,48 +9,49 @@
 
 <AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EditoraFormulario">
     <children>
-        <Pane prefHeight="113.0" prefWidth="960.0" style="-fx-background-color: #0000A7;">
+        <Pane prefHeight="65.0" prefWidth="960.0" style="-fx-background-color: #0000A7;">
             <children>
-                <Label layoutX="326.0" layoutY="39.0" text="Cadastro de Editoras" textFill="WHITE">
+                <Label layoutX="323.0" layoutY="15.0" text="Cadastro de Editoras" textFill="WHITE">
                     <font>
                         <Font size="30.0" />
                     </font>
                 </Label>
             </children></Pane>
-        <Label layoutX="61.0" layoutY="184.0" text="Nome:">
-            <font>
-                <Font size="20.0" />
-            </font></Label>
-        <Label layoutX="59.0" layoutY="256.0" text="Site:">
-            <font>
-                <Font size="20.0" />
-            </font></Label>
-        <TextField fx:id="txfNome" layoutX="316.0" layoutY="184.0" prefHeight="26.0" prefWidth="242.0" />
-        <TextField fx:id="txfEmail" layoutX="316.0" layoutY="257.0" prefHeight="26.0" prefWidth="242.0" />
-        <Button fx:id="btnSalvar" layoutX="747.0" layoutY="429.0" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
-      <Label text="Site:">
+      <Label layoutX="63.0" layoutY="144.0" text="ID:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
+      <TextField fx:id="txfID" layoutX="153.0" layoutY="107.0" prefHeight="26.0" prefWidth="242.0" />
+        <Label layoutX="61.0" layoutY="184.0" text="Nome:">
+            <font>
+                <Font size="20.0" />
+            </font></Label>
+        <TextField fx:id="txfNome" layoutX="153.0" layoutY="158.0" prefHeight="26.0" prefWidth="242.0" />
+        <Label layoutX="59.0" layoutY="256.0" text="Site:">
+            <font>
+                <Font size="20.0" />
+            </font></Label>
+        <TextField fx:id="txfEmail" layoutX="153.0" layoutY="207.0" prefHeight="26.0" prefWidth="242.0" />
       <Label layoutX="59.0" layoutY="314.0" text="Endereço:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="txfEmail" layoutX="316.0" layoutY="314.0" prefHeight="26.0" prefWidth="242.0" />
-      <TextField fx:id="txfEmail" layoutX="316.0" layoutY="379.0" prefHeight="26.0" prefWidth="242.0" />
+      <TextField fx:id="txfEmail" layoutX="591.0" layoutY="107.0" prefHeight="26.0" prefWidth="242.0" />
       <Label layoutX="44.0" layoutY="380.0" text="Bairro:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="txfEmail" layoutX="316.0" layoutY="436.0" prefHeight="26.0" prefWidth="242.0" />
+      <TextField fx:id="txfEmail" layoutX="591.0" layoutY="158.0" prefHeight="26.0" prefWidth="242.0" />
       <Label layoutX="49.0" layoutY="437.0" text="Telefone:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
+      <TextField fx:id="txfEmail" layoutX="591.0" layoutY="207.0" prefHeight="26.0" prefWidth="242.0" />
+        <Button fx:id="btnSalvar" layoutX="747.0" layoutY="429.0" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
     </children>
 
 </AnchorPane>
