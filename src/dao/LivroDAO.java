@@ -1,5 +1,7 @@
 package dao;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.Livro;
 
 import java.sql.Connection;
@@ -38,7 +40,7 @@ public class LivroDAO {
         }
 
     }
-    public List<Livro> listarTodos(){
+    public ObservableList listarTodos(){
         String sql = "select * from livros";
         List<Livro> livros = new ArrayList<>();
 
@@ -60,10 +62,12 @@ public class LivroDAO {
             }
 
             conexao.close();
+
         }catch(SQLException e){
             throw new RuntimeException(e);
         }
-        return livros;
+        ObservableList data = FXCollections.observableList(livros);
+        return data;
     }
 
     public void alterar(Livro livro){

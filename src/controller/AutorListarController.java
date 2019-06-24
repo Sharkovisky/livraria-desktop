@@ -34,6 +34,13 @@ public class AutorListarController implements Initializable {
         InitTable();
     }
 
+    private void limparCampo(){
+        txfID.setText("");
+        txfNome.setText("");
+        txfEmail.setText("");
+        txfNome.requestFocus();
+    }
+
     public void InitTable(){
         //autorSelecionado = null;
         tbvwAutores.setEditable(false);
@@ -49,6 +56,7 @@ public class AutorListarController implements Initializable {
 
         tbvwAutores.setItems(autorDAO.listarTodos());
         tbvwAutores.setOnMouseClicked(tableClick);
+
     }
 
     private EventHandler<MouseEvent> tableClick = evt ->{
@@ -71,6 +79,12 @@ public class AutorListarController implements Initializable {
         AutorDAO autorDAO = new AutorDAO();
         autorDAO.alterar(autor);
 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Cadastro de autores");
+        alert.setHeaderText("Cadastro de autores");
+        alert.setContentText("Autor alterado com sucesso");
+        alert.showAndWait();
+
         resetar();
     }
 
@@ -86,9 +100,31 @@ public class AutorListarController implements Initializable {
     }
 
     public void resetar(){
-        System.out.println("Teste de reset2");
-        tbvwAutores.getItems().removeAll();
+        //System.out.println("Teste de reset2");
+        tbvwAutores.refresh();
+        limparCampo();
         //tbvwAutores.getItems().addAll(autorDAO.listarTodos());
+    }
+
+    public void salvar(){
+        // TODO
+        //System.out.println("Nome: "+txfNome.getText());
+        //System.out.println("E-mail: "+txfEmail.getText());
+
+        Autor autor = new Autor();
+        autor.setNome(txfNome.getText());
+        autor.setEmail(txfEmail.getText());
+
+        AutorDAO autorDAO = new AutorDAO();
+        autorDAO.inserir(autor);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Cadastro de autores");
+        alert.setHeaderText("Cadastro de autores");
+        alert.setContentText("Autor cadastrado com sucesso");
+        alert.showAndWait();
+
+        limparCampo();
     }
 
 }

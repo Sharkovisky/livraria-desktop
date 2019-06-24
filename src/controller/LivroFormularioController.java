@@ -1,13 +1,17 @@
 package controller;
 
+import com.mysql.cj.xdevapi.Table;
 import dao.EditoraDAO;
 import dao.LivroDAO;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import model.Editora;
@@ -15,6 +19,7 @@ import model.Livro;
 
 import java.net.URL;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -27,14 +32,43 @@ public class LivroFormularioController implements Initializable {
     @FXML private TextField txfData_lancamento;
     @FXML private TextField txfQuantidade;
     @FXML private TextField txfPreco;
+    @FXML private TableView<Livro> tbvwLivros = new TableView<>();
+    @FXML private TableColumn<Livro, Integer> columnId = new TableColumn<>("ID");
+    @FXML private TableColumn<Livro, String> columnTitulo = new TableColumn<>("Título");
+    @FXML private TableColumn<Livro, Date> columnData = new TableColumn<>("Data de lançamento");
+    @FXML private TableColumn<Livro, Integer> columnQuantidade = new TableColumn<>("Quantidade");
+    @FXML private TableColumn<Livro, Float> columnPreco = new TableColumn<>("Preço");
+    @FXML private TableColumn<Livro, Editora> columnEditora = new TableColumn<>("Editora");
     @FXML private ComboBox<Editora> comboEditoras = new ComboBox<>();
+
+    private Livro livro = new Livro();
+    private LivroDAO livroDAO = new LivroDAO();
+    private Livro livroSelecionado = null;
 
     public void initialize(URL location, ResourceBundle resources){
         initEditoras();
+        iniciarTabela();
     }
 
-    public String toString(Editora editora){
-        return editora.getNome();
+    public void iniciarTabela(){
+        tbvwLivros.setEditable(false);
+        columnId.setCellValueFactory(new PropertyValueFactory<Livro, Integer>("id"));
+
+        columnTitulo.setCellValueFactory((param) -> new SimpleStringProperty(param.getValue().getTitulo()));
+        columnTitulo.setCellFactory(TextFieldTableCell.forTableColumn());
+
+
+
+        columnData.setCellValueFactory(new PropertyValueFactory<Livro, Date>("data_lancamento"));
+
+        columnQuantidade.setCellValueFactory(new PropertyValueFactory<Livro, Integer>("quantidade"));
+
+        columnPreco.setCellValueFactory(new PropertyValueFactory<Livro, Float>("preco"));
+
+        columnEditora.setCellValueFactory((param) -> new SimpleObjectProperty(param.getValue().getEditora_id()));
+
+        tbvwLivros.setItems(livroDAO.listarTodos());
+
     }
 
     public void initEditoras() {
