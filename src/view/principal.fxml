@@ -5,15 +5,13 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="540" prefWidth="960" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PrincipalController">
+<AnchorPane fx:id="archorPane1" prefHeight="605" prefWidth="960" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PrincipalController">
    <children>
       <MenuBar>
         <menus>
           <Menu mnemonicParsing="false" text="Autores">
             <items>
-              <MenuItem fx:id="menuItemCadastrar" mnemonicParsing="false" onAction="#menuCadastrar" text="Cadastrar" />
-                  <MenuItem mnemonicParsing="false" text="Listar Todos" />
+              <MenuItem fx:id="itemAutores" mnemonicParsing="false" onAction="#itemAutores" text="Cadastrar" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Contatos">
@@ -38,5 +36,6 @@
             </Menu>
         </menus>
       </MenuBar>
+      <AnchorPane fx:id="archorPane2" layoutY="29.0" prefHeight="540" prefWidth="960.0" />
    </children>
 </AnchorPane>
